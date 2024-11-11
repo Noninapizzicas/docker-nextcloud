@@ -15,7 +15,7 @@ services:
     volumes:
       - ./nextcloud/data:/var/www/html
     networks:
-      - nextcloud_network
+      - n8n-network  # Cambiado a la red existente
 
   db:
     image: postgres:13
@@ -27,11 +27,12 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
-      - nextcloud_network
+      - n8n-network  # Cambiado a la red existente
 
+# Usar red externa existente
 networks:
-  nextcloud_network:
-    driver: bridge
+  n8n-network:
+    external: true  # Indica que la red ya existe
 
 volumes:
   db_data:
