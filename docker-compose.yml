@@ -15,7 +15,7 @@ services:
     volumes:
       - ./nextcloud/data:/var/www/html
     networks:
-      - n8n-network  # Cambiado a la red existente
+      - docker-apps-n8n_n8n-network  # Nombre correcto de la red
 
   db:
     image: postgres:13
@@ -27,11 +27,11 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
-      - n8n-network  # Cambiado a la red existente
+      - docker-apps-n8n_n8n-network  # Nombre correcto de la red
 
 # Usar red externa existente
 networks:
-  n8n-network:
+  docker-apps-n8n_n8n-network:
     external: true  # Indica que la red ya existe
 
 volumes:
